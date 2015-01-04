@@ -1,4 +1,4 @@
 ultisnips
 =========
 
-ultisnip snippets
+My personal snippets
