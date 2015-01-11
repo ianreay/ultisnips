@@ -1,4 +1,1 @@
-ultisnips
-=========
-
-My personal snippets
+Ultisnips for various file types

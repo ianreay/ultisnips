@@ -1,0 +1,1 @@
+copy C:\users\ianr.IANR-WS\vimfiles\ultisnips\* .
