@@ -1,32 +1,28 @@
 snippet page "page" !b
-${1:title}
-==========================
+# ${1:title} <a name="${2}"/> #
 
-${2:content}
+${3:content}
 
 endsnippet
 
 snippet s "section" !b
-${1:title}
---------------------------
+## ${1:title} <a name="${2}"/> ##
 
-${2:content}
+${3:content}
 
 endsnippet
 
 snippet ss "section" !b
-${1:title}
---------------------------
+### ${1:title} <a name="${2}"/> ###
 
-${2:content}
+${3:content}
 
 endsnippet
 
 snippet sss "section" !b
-${1:title}
---------------------------
+#### ${1:title} <a name="${2}"/> ####
 
-${2:content}
+${3:content}
 
 endsnippet
 
@@ -39,10 +35,16 @@ snippet il "internal link"
 endsnippet
 
 snippet ls "list start" !b
+
 * ${1:entry}
 endsnippet
 
 snippet le "list entry" !b
-* ${2:entry}
+* ${1:entry}
 endsnippet
 
+snippet code "code block" !b 
+
+    ${1:code}
+
+endsnippet
