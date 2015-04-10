@@ -7,6 +7,15 @@ UINT __stdcall ${1:name}( MSIHANDLE hModule )
 }
 endsnippet
 
+snippet fixme "fixme comment" !b 
+// FIXME `!p 
+import time
+import os
+snip.rv = time.strftime("%Y-%m-%d") + " " + os.environ["USERNAME"]
+# snip.rv = 
+`: ${1:comment}
+endsnippet
+
 snippet 8tow "utf8 to wchar" !b
 mtech::utfutil::UTF8ToWChar( ${1:ptr}, ${2:length}, ${3:out} );
 endsnippet

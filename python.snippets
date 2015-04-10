@@ -5,6 +5,24 @@ except ${2:Exception} as err:
 		${3:handler}
 endsnippet
 
+snippet note "note comment" !b 
+# NOTE `!p 
+import time
+import os
+snip.rv = time.strftime("%Y-%m-%d") + " " + os.environ["USERNAME"]
+# snip.rv = 
+`: ${1:comment}
+endsnippet
+
+snippet fixme "fixme comment" !b 
+# FIXME `!p 
+import time
+import os
+snip.rv = time.strftime("%Y-%m-%d") + " " + os.environ["USERNAME"]
+# snip.rv = 
+`: ${1:comment}
+endsnippet
+
 snippet print "Print" 
 print("${1:msg}".format(${2:args}))
 endsnippet

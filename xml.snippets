@@ -4,6 +4,49 @@ snippet desc "Description" !b
   ${1:content}
 </description>
 endsnippet
+
+snippet search "initialize a search engine" !b
+<variable name="searchid" type="searchcache.searchid"/>
+
+INSERT INTO "searchcache" ( <insertIdentity table="searchcache" field="searchid" mode="field"/> "userid", "cachetable", "rowcount" )
+VALUES ( <insertIdentity table="searchcache" field="searchid" mode="value"/> @audituser, 'cache_${1:name}', 0 );
+
+<select-into>
+	<clause><lastidentity table="searchcache" field="searchid"/></clause>
+	<into>@searchid</into>
+	<sql><from-nothing/>;</sql>
+</select-into>
+
+<dsql-init name="search"/>
+<dsql mssql="true">
+
+INSERT INTO "cache_$1" ( ${2:args} )
+FROM "$1"
+</dsql>
+
+<dsql name="search">
+	ORDER BY "$1"."id"
+</dsql>
+
+<dsql-exec name="search" return="true"/>
+
+UPDATE "searchcache"
+SET "rowcount" = <rowcount/>, "totalrows" = <rowcount/>
+WHERE "searchid" = @searchid;
+
+<return/> SELECT @searchid <into-outputs/> <from-nothing/>;
+
+endsnippet
+
+snippet fixme "fixme comment" !b 
+<!-- FIXME `!p 
+import time
+import os
+snip.rv = time.strftime("%Y-%m-%d") + " " + os.environ["USERNAME"]
+# snip.rv = 
+`: ${1:comment} -->
+endsnippet
+
 snippet import "import rule category" !b
 <import/>
 endsnippet
@@ -40,6 +83,15 @@ snippet wr "weak relation" !b
 <weakrelation thattable="${1:table}">
 	<refer_field thisfield="${2:id}" thatfield="${3:id}"/>
 </weakrelation>
+endsnippet
+
+snippet note "note" !b 
+<!-- NOTE: `!p 
+import time
+import os
+snip.rv = time.strftime("%Y-%m-%d") + " " + os.environ["USERNAME"]
+# snip.rv = 
+`: ${1:comment} -->
 endsnippet
 
 snippet c "comment" 
@@ -125,19 +177,26 @@ snippet doc "Doc boiler plate" !b
 </design-document>
 endsnippet
 
-snippet bi "bulleted list" !b
+snippet bl "bulleted list" !b
 <ul>
   <li>${1:item}</li>
 </ul>
 <p/>
 endsnippet
 
-snippet i "list item" !b
+snippet le "list item" !b
 <li>${1:item}</li>
+endsnippet
+
+snippet ucs "use cases" b
+<use-cases>
+	${1:content}
+</use-cases>
 endsnippet
 
 snippet uc "Use case" !b
 <use-case name="${1:label}" label="uc_${2:${1/(\w+)|\W+/(?1:\L$0\E:_)/g}}">
+	${3:content}
 </use-case>
 endsnippet
 

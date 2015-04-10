@@ -5,16 +5,55 @@ snippet =b "new block" !b
 =end
 endsnippet
 
+snippet change "change method" !b
+def change
+	${1:body}
+end
+endsnippet
+
+snippet create_table "create table request" !b
+create_table :${1:name}, force: true do |t|
+	t.string :${2:column}
+end
+endsnippet
+
+snippet tstring "table string" !b
+t.string :${1:name}
+endsnippet
+
 snippet prot "protected" !b
 	protected
 
 	${0}
 endsnippet
 
+snippet ar "active record class" !b
+class ${1:name} < ActiveRecord::Base
+	${2:content}
+end
+endsnippet
 snippet priv "private " !b
 	private
 
 	${0}
+endsnippet
+
+snippet note "note comment" !b 
+# NOTE `!p 
+import time
+import os
+snip.rv = time.strftime("%Y-%m-%d") + " " + os.environ["USERNAME"]
+# snip.rv = 
+`: ${1:comment}
+endsnippet
+
+snippet fixme "fixme comment" !b 
+# FIXME `!p 
+import time
+import os
+snip.rv = time.strftime("%Y-%m-%d") + " " + os.environ["USERNAME"]
+# snip.rv = 
+`: ${1:comment}
 endsnippet
 
 # snippet y

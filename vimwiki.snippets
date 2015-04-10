@@ -1,3 +1,25 @@
 snippet sss "sub sub section" !b
 ===${1:title}===
 endsnippet
+
+snippet test "testing" !b
+ianr
+endsnippet
+
+snippet note "Note comment" !b
+# NOTE `!p 
+import time
+import os
+snip.rv = time.strftime("%Y-%m-%d") + " " + os.environ["USERNAME"]
+# snip.rv = 
+`: ${1:comment}
+endsnippet
+
+snippet fixme "FIXME comment" !b
+# FIXME `!p 
+import time
+import os
+snip.rv = time.strftime("%Y-%m-%d") + " " + os.environ["USERNAME"]
+# snip.rv = 
+`: ${1:comment}
+endsnippet
